@@ -1,3 +1,6 @@
+#Spotipy access token cache
+*.cache
+
 # Local .terraform directories
 **/.terraform/*
 
