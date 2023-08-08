@@ -15,4 +15,7 @@ resource "aws_lambda_function" "lambda_func" {
       # should include env variables in the dockerfile
     }
   }
+  depends_on = [
+    aws_s3_bucket.s3_bucket,
+  ]
 }
