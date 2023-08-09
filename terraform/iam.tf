@@ -29,6 +29,15 @@ data "aws_iam_policy_document" "lambda_exec_role" {
     ]
     resources = ["aws_s3_bucket.lambda_bucket.arn/*"]
   }
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "lambda_exec_role" {
