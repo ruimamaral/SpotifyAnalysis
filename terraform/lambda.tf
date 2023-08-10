@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "lambda_func" {
   function_name = "${var.env_name}_extractor"
   timeout       = 20 # seconds
-  image_uri     = docker_image.image.uri
+  image_uri     = docker_image.image.name
   package_type  = "Image"
 
   role = aws_iam_role.lambda_exec_role.arn
