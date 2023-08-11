@@ -14,6 +14,15 @@ resource "aws_lambda_function" "lambda_func" {
     }
   }
   depends_on = [
-    aws_s3_bucket.bucket
+    aws_s3_bucket.bucket,
+    docker_registry_image.registry,
+    docker_image.image
   ]
+}
+
+resource "aws_lambda_permission" "allow_eventbridge" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda_func.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.lambda_rule.arn
 }

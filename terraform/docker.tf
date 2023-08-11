@@ -1,5 +1,5 @@
 locals {
-  tag = "1.0"
+  tag = "1.1"
 }
 
 resource "docker_image" "image" {
