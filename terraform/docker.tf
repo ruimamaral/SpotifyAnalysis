@@ -10,6 +10,6 @@ resource "docker_image" "image" {
   }
 }
 
-resource "docker_image_registry" "image_registry" {
+resource "docker_registry_image" "registry" {
   name = docker_image.image.name
 }

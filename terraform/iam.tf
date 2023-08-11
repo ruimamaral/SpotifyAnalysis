@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_exec_role" {
-  name               = "${var.env_name}_lambda_execution"
+  name               = "${var.env_name}-lambda-exec"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
 }
 
@@ -17,31 +17,31 @@ data "aws_iam_policy_document" "lambda_assume_role" {
 data "aws_iam_policy_document" "lambda_exec_role" {
   statement {
     effect    = "Allow"
+    resources = ["${aws_s3_bucket.bucket.arn}"]
     actions   = ["s3:ListBucket"]
-    resources = ["aws_s3_bucket.lambda_bucket.arn"]
   }
   statement {
-    effect = "Allow"
-    actions = [
+    effect    = "Allow"
+    resources = ["${aws_s3_bucket.bucket.arn}/*"]
+    actions   = [
       "s3:PutObject",
       # "s3:DeleteObject",
       "s3:GetObject"
     ]
-    resources = ["aws_s3_bucket.lambda_bucket.arn/*"]
   }
   statement {
-    effect = "Allow"
-    actions = [
+    effect    = "Allow"
+    resources = ["*"]
+    actions   = [
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents"
     ]
-    resources = ["*"]
   }
 }
 
 resource "aws_iam_policy" "lambda_exec_role" {
-  name        = "${var.env_name}_lambda_exec_role"
+  name        = "${var.env_name}-lambda-exec"
   policy      = data.aws_iam_policy_document.lambda_exec_role.json
   description = "IAM policy for the lambda function execution role"
 }

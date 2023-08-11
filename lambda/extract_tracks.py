@@ -40,7 +40,7 @@ def handle_lambda(event, context):
     today = datetime.now()
     s3_client.upload_file(
         '/tmp/rapcaviar_songs.csv',
-        f'{os.environ['ENVIRONMENT']}_data', # bucket
+        f'{os.environ['ENVIRONMENT']}-data', # bucket
         f'{today.year}/{today.month}/{today.day}/rapcaviar_songs.csv'
     )
 

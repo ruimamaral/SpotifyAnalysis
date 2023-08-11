@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "${var.env_name}_data"
+resource "aws_s3_bucket" "bucket" {
+  bucket = "${var.env_name}-data52"
 }
 /* 
   AWS recommends using policies instead of ACLs when possible and has
