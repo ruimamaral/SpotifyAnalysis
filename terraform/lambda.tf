@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "lambda_func" {
   function_name = "${var.env_name}-extractor"
-  timeout       = 20 # seconds
+  timeout       = 120 # seconds
   image_uri     = docker_image.image.name
   package_type  = "Image"
 
