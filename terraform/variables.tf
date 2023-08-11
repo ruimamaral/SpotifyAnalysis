@@ -10,6 +10,12 @@ variable "aws_secret_key" {
   sensitive   = true
 }
 
+variable "region" {
+  description = "AWS region to create resources in"
+  type        = string
+  default     = "eu-west-3"
+}
+
 variable "spotipy_client_id" {
   description = "ID for the spotify API client"
   type        = string
@@ -20,12 +26,6 @@ variable "spotipy_client_secret" {
   description = "Secret key for the spotify API client"
   type        = string
   sensitive   = true
-}
-
-variable "region" {
-  description = "AWS region to create resources in"
-  type        = string
-  default     = "eu-west-3"
 }
 
 variable "env_name" {
