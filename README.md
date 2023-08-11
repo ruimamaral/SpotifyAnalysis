@@ -16,7 +16,7 @@ Terraform creates all the needed Cloud resources for the pipeline to run and als
 
 * Fill in the [terraform.tfvars](terraform/terraform.tfvars) file's variables with your spotify API and AWS user credentials as well as your preferred AWS region (default is eu-west-3)
 
-* Fill in your Terraform Cloud organization name and workspace in the [backend.tf](terraform/backend.tf) file **OR** remove the `cloud` block altogether in order not to use Terraform Cloud (local backend)
+* Fill in your Terraform Cloud organization name and workspace in the [backend.tf](terraform/backend.tf) file and run `terraform login` **OR** remove the `cloud` block altogether in order not to use Terraform Cloud (local backend)
 
 * Run `terraform init` followed by `terraform apply` inside the [terraform](terraform) directory
 
